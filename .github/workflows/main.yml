@@ -1,0 +1,64 @@
+import urllib.request
+import os
+
+def download_video(url):
+    try:
+        # get the video name from the url
+        video_name = url.split("/")[-1]
+        
+        # download the video
+        urllib.request.urlretrieve(url, video_name)
+        print("Video downloaded successfully!")
+        
+    except Exception as e:
+        print("Error while downloading video:", e)
+        
+if __name__ == '__main__':
+    # get the video url from the user
+    video_url = input("Enter the video URL:")
+    
+    # download the video
+    download_video(video_url)
+
+import tkinter as tk
+import urllib.request
+import os
+
+def download_video():
+    try:
+        # get the video url from the user
+        video_url = video_url_entry.get()
+        
+        # get the video name from the url
+        video_name = video_url.split("/")[-1]
+        
+        # download the video
+        urllib.request.urlretrieve(video_url, video_name)
+        status_label.config(text="Video downloaded successfully!")
+        
+    except Exception as e:
+        status_label.config(text="Error while downloading video: {}".format(e))
+        
+if __name__ == '__main__':
+    # create the main window
+    root = tk.Tk()
+    root.title("Video Downloader")
+
+    # create the video url label and entry
+    video_url_label = tk.Label(root, text="Enter video URL:")
+    video_url_label.pack()
+    video_url_entry = tk.Entry(root)
+    video_url_entry.pack()
+
+    # create the download button
+    download_button = tk.Button(root, text="Download", command=download_video)
+    download_button.pack()
+
+    # create the status label
+    status_label = tk.Label(root, text="")
+    status_label.pack()
+
+    # run the main loop
+    root.mainloop()
+
+
