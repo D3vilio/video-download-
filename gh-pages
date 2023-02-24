@@ -1,0 +1,40 @@
+import urllib.request
+
+import os
+
+def download_video(url):
+
+    try:
+
+        # get the video name from the url
+
+        video_name = url.split("/")[-1]
+
+        
+
+        # download the video
+
+        urllib.request.urlretrieve(url, video_name)
+
+        print("Video downloaded successfully!")
+
+        
+
+    except Exception as e:
+
+        print("Error while downloading video:", e)
+
+        
+
+if __name__ == '__main__':
+
+    # get the video url from the user
+
+    video_url = input("Enter the video URL:")
+
+    
+
+    # download the video
+
+    download_video(video_url)
+
